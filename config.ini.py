@@ -1,0 +1,4 @@
+ELASTICSEARCH = {
+    'hosts': [],
+    'indexname': '',
+}
