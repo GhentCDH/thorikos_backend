@@ -48,7 +48,6 @@ async def search(
     es_body: ElasticSearchBody,
     request: Request
 ):
-    print(es_body)
     return await request.app.state.es.search(
         index=ELASTICSEARCH['indexname'],
         body=es_body.dict()
