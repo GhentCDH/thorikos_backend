@@ -52,3 +52,14 @@ async def search(
         index=ELASTICSEARCH['indexname'],
         body=es_body.dict()
     )
+
+@app.get('/{entity_type}/{entity_id}')
+async def doc(
+    entity_type: str,
+    entity_id: str,
+    request: Request
+):
+    return await request.app.state.es.get(
+        index=ELASTICSEARCH['indexname'],
+        id=f'{entity_type}__{entity_id}'
+    )
