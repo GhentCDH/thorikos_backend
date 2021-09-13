@@ -29,6 +29,7 @@ class ElasticSearchBody(pydantic.BaseModel):
     from_: int = None
     size: int = None
     query: dict = None
+    suggest: dict = None
 
     class Config:
         fields = {
