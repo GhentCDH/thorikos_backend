@@ -1,3 +1,4 @@
 elasticsearch[async]
 fastapi
+gunicorn
 uvicorn
