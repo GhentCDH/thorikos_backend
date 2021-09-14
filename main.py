@@ -60,7 +60,10 @@ async def doc(
     entity_id: str,
     request: Request
 ):
-    return await request.app.state.es.get(
-        index=ELASTICSEARCH['indexname'],
-        id=f'{entity_type}__{entity_id}'
-    )
+    try:
+        return await request.app.state.es.get(
+            index=ELASTICSEARCH['indexname'],
+            id=f'{entity_type}__{entity_id}'
+        )
+    except elasticsearch.exceptions.NotFoundError:
+        raise fastapi.HTTPException(status_code=404, detail='Item not found')
