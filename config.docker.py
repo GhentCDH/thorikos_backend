@@ -1,0 +1,18 @@
+from os import environ
+
+ALLOWED_ORIGINS = []
+if "ALLOWED_ORIGINS" in environ:
+    ALLOWED_ORIGINS = str(environ.get("ALLOWED_ORIGINS")).split(",")
+
+ELASTICSEARCH_HOSTS = []
+if "ELASTICSEARCH_HOSTS" in environ:
+    ELASTICSEARCH_HOSTS = str(environ.get("ELASTICSEARCH_HOSTS")).split(",")
+
+ELASTICSEARCH_INDEXNAME = None
+if "ELASTICSEARCH_INDEXNAME" in environ:
+    ELASTICSEARCH_INDEXNAME = str(environ.get("ELASTICSEARCH_INDEXNAME"))
+
+ELASTICSEARCH = {
+    'hosts': ELASTICSEARCH_HOSTS,
+    'indexname': ELASTICSEARCH_INDEXNAME,
+}

@@ -1,0 +1,9 @@
+#!/bin/bash
+GUNICORN_WORKERS="${VARIABLE:-4}"
+GUNICORN_BIND="${VARIABLE:-127.0.0.1:8000}"
+GUNICORN_WORKER_CLASS="${VARIABLE:-uvicorn.workers.UvicornWorker}"
+
+PYTHONPATH=/app/thorikos gunicorn \
+    --workers "${GUNICORN_WORKERS}" \
+    --bind "${GUNICORN_BIND}" \
+    --worker-class "${GUNICORN_WORKER_CLASS}" main:app
